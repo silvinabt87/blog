@@ -13,18 +13,18 @@ defmodule BlogWeb.Router do
     plug :accepts, ["json"]
   end
 
-  # scope "/", BlogWeb do
-  #   pipe_through :api
+  scope "/", BlogWeb do
+    pipe_through :browser
 
-  #   get "/", PageController, :index
-  #   resources "/posts", PostController, only: [:index, :show]
-  # end
+    get "/", PageController, :index
+    resources "/posts", PostController, only: [:index, :show]
+    get "/posts", PostController, only: [:index, :show]
+  end
 
   # Other scopes may use custom stacks.
-  scope "/api", BlogWeb do
-    pipe_through :api
-    resources "/posts", PostController, only: [:index, :show, :delete]
-  end
+  # scope "/api", BlogWeb do
+  #   pipe_through :api
+  # end
 
   # Enables LiveDashboard only for development
   #

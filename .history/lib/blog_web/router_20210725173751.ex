@@ -23,7 +23,7 @@ defmodule BlogWeb.Router do
   # Other scopes may use custom stacks.
   scope "/api", BlogWeb do
     pipe_through :api
-    resources "/posts", PostController, only: [:index, :show, :delete]
+    resources "/posts", PostController, only: [:index, :show]
   end
 
   # Enables LiveDashboard only for development
